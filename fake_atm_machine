@@ -1,0 +1,23 @@
+#!/usr/bin/bash
+
+
+clear
+
+
+echo -e "\t\t\tWelcome to Cho-I-Chop Bank\n" 
+echo -e "\n*********************************************\n" #the stars make password hiden
+echo -e "\t\t\tplease enter your PIN\n"
+read -s customer_pin #s stand for secrete
+
+
+echo $customer_pin
+
+
+current_account_balance=5000000000000
+amount_to_withdraw=450000
+remaining_balance=`expr $current_account_balance - $amount_to_withdraw`
+echo $remaining_balance
+
+
+
+

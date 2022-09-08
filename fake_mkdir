@@ -1,0 +1,4 @@
+#!/usr/bin/bash
+newfoldername=$1
+mkdir $newfoldername
+echo "${newfoldername} created successfully"
