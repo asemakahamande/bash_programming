@@ -14,7 +14,7 @@ echo $customer_pin
 
 
 current_account_balance=5000000000000
-amount_to_withdraw=450000
+read -p "HOw much do want to withdraw: " amount_to_withdraw  # amount_to_withdraw=450000
 remaining_balance=`expr $current_account_balance - $amount_to_withdraw`
 echo $remaining_balance
 
