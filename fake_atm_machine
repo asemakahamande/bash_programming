@@ -14,10 +14,18 @@ echo $customer_pin
 
 
 current_account_balance=5000000000000
+
+# withdrawal
+
 read -p "HOw much do want to withdraw: " amount_to_withdraw  # amount_to_withdraw=450000
 remaining_balance=`expr $current_account_balance - $amount_to_withdraw`
 echo $remaining_balance
 
+# Deposit
+
+read -p "HOw Much money would you like to deposit?" amount_to_deposit
+new_balance=`expr $remaining_balance + $amount_to_deposit`
+echo "YOur new account is ${new_balance}"
 
 
 
