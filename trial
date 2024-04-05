@@ -1,0 +1,22 @@
+#!/usr/bin/bash
+
+
+source=/c/Users/HON.ABDULLAHI KARSHI/bash_programming/Documents/source
+dest=/c/Users/HON.ABDULLAHI KARSHI/bash_programming/Documents/destination
+
+
+for file in $(find $source -printf "%p\n) ; do 
+	if [ -a $dest/file ] ; then
+		if [ source/file -nt I$dest/$file ] ; then
+		echo "Newer file detected, copying..."
+		cp -r $source/$file $dest/$file
+		else
+		echo "File $file exists, skipping."
+		fi
+	else
+	echo "$file is being copied to $dest"
+	cp -r $source/$file $dest/$file
+	fi
+done
+
+

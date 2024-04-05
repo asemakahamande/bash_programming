@@ -1,0 +1,101 @@
+#!/bin/bash
+
+clear
+savings_balance=1000000
+current_balance=500000
+
+echo -e "\t\tWelcome to iSTEMLabsAfrica E-Bank"
+echo -e "\nPlease enter your pin below:"
+read -s atm_pin
+
+function deposit_money(){
+    balance_at_hand=$1
+    amount_to_deposit=$2
+
+    new_balance=`expr $balance_at_hand + $amount_to_deposit`
+    return new_balance
+}
+
+function withdraw_money(){
+    balance_at_hand=$1
+    amount_to_withdraw=$2
+
+    new_balance=`expr $balance_at_hand - $amount_to_withdraw`
+    return new_balance
+}
+
+function menu_choose_account(){
+    echo -e "\nPlease select the number for the account you want to use:"
+    echo -e "\n1. Current Account"
+    echo -e "2. Savings Account"
+    echo -e "0. Exit ATM"
+
+    read account_selection
+    return account_selection
+}
+
+function menu_select_operation(){
+    echo "\nPlease select an operation:"
+    echo "\n1. Withdrawal"
+    echo "\n2. Deposit"
+    
+    read next_action
+    return next_action
+}
+
+if [[ $atm_pin -eq "2211" ]]; then
+    menu_choose_account
+
+    if [[ $account_selection -eq "1" ]]; then
+        echo "Your Current account balance is N$current_balance"
+	menu_selection_operation
+
+        # Logic for withdrawal
+        if [[ $next_action -eq "1" ]]; then
+            echo "\nEnter the amount to withdraw: "
+            read amount
+            if [[ $amount -lt $current_balance ]]; then
+                # new_balance=`expr $current_balance - $amount`
+		withdraw_money $current_balance $amount
+                echo -e "\nYour new balance is $new_balance"
+            else
+	        echo -e "\nInsufficient funds for this transaction"
+            fi
+        elif [[ $next_action -eq "2" ]]; then
+            echo "\nEnter amount to deposit: "
+            read amount
+	    deposit_money $current_balance $amount
+            # new_balance=`expr $current_balance + $amount`
+            echo "\nYour new balance is $new_balance"
+	    current_balance=$new_balance
+        else
+            echo "\nInvalid option selected"
+        fi
+
+    elif [[ $account_selection -eq "2" ]]; then
+        echo "Your Savings account balance is N$savings_balance"
+        menu_select_operation
+
+        if [[ $next_action -eq "1" ]]; then
+            echo "\nEnter the amount to withdraw: "
+            read amount
+            if [[ $amount -lt $savings_balance ]]; then
+                withdraw_money $savings_balance $amount
+            else
+                echo -e "\nInsufficient balance"
+            fi
+        elif [[ $next_action -eq "2" ]]; then
+            echo "\nEnter amount to deposit: "
+            read amount
+            deposit_money $savings_balance $amount
+        else
+            echo -e "Invalid Option"
+        fi
+    elif [[ $account_selection -eq "0" ]]; then
+        exit 0
+    else
+        echo "You selected an invalid option. Please select 1 or 2"
+    fi
+else
+    echo -e "\nSorry, you entered a wrong pin"
+fi

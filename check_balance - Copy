@@ -1,0 +1,16 @@
+#!/usr/bin/bash
+
+
+clear
+
+echo -e "\t\t\tM G W Bank\n"
+echo -e "\n*****************************************\n"
+echo -e "\t\t\tPlease enter your pin\n"
+read -s customer_pin
+
+echo $customer_pin
+
+current_account_balance=10000000000000
+
+echo "your current balance is:"$current_account_balance
+

@@ -1,0 +1,58 @@
+#!/usr/bin/bash
+
+
+clear
+
+
+echo -e "\t\t\tWelcome to Cho-I-Chop Bank\n" 
+echo -e "\n*********************************************\n" #the stars make password hiden
+echo -e "\t\t\tplease enter your PIN\n"
+read -s customer_pin #s stand for secrete
+
+
+
+if [[ $customer_pin -eq "2111" ]]; then
+    current_account_balance=5000000000000
+    #menu_selectio    
+    echo "select an operation to perform"
+    echo -e "\n1) withdraw \n2) Deposit \n3) check_Balance"
+    read -p "Enter 1,2 or 3:" menu_selection
+
+    if [[ $menu_selection -eq "1" ]]; then
+        read -p "HOw much do you want to withdraw: " amount_to_withdraw  # amount_to_withdraw=450000
+        remaining_balance=`expr $current_account_balance - $amount_to_withdraw`
+        echo $remaining_balance
+	echo -e "\nEnter amount to withdraw: "
+        exit
+    elif [[ $menu_selection -eq "2" ]]; then
+        read -p "HOw Much money would you like to deposit?" amount_to_deposit
+        new_balance=`expr $remaining_balance + $amount_to_deposit`
+        echo -e "\nEnter amount to deposit"
+        echo "your new accoun balance is ${new_balance}" 
+        exit
+    elif [[ $menu_selection -eq "3" ]]; then
+        echo "your account balance ${new_balance}"
+	echo -e "\nyour account balance is"
+        exit
+    else
+        echo -e "\nyou don't have access to this account"
+        exit
+    fi
+    # withdrawal
+
+    read -p "HOw much do you want to withdraw: " amount_to_withdraw  # amount_to_withdraw=450000
+    remaining_balance=`expr $current_account_balance - $amount_to_withdraw`
+    echo $remaining_balance
+
+    # Deposit
+
+    read -p "HOw Much money would you like to deposit?" amount_to_deposit
+    new_balance=`expr $remaining_balance + $amount_to_deposit`
+    echo "YOur new account is ${new_balance}"
+
+    # Account Balance 
+    echo "your account balance ${new_balance}"
+else
+    echo "sorry you don't have access to this account"
+fi
+

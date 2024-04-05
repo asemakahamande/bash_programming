@@ -1,0 +1,62 @@
+#!/usr/bin/bash
+
+
+#clear
+function bank(){
+    echo -e "\t\t\tWelcome to Cho-I-Chop Bank\n"
+    echo -e "\n*********************************************\n" #the stars make password hiden
+    echo -e "\t\t\tplease enter your PIN\n"
+    read -s customer_pin #s stand for secrete
+
+
+
+if [[ $customer_pin -eq "2111" ]]; then
+    current_account_balance=5000000000000
+    #menu_selection
+    echo "select an operation to perform"
+    echo -e "\n1) withdraw \n2) Deposit \n3) check_Balance \n4)another_operation"
+    read -p "Enter 1,2 or 3:" menu_selection
+    if [[ $menu_selection -eq "1" ]]; then
+        read -p "HOw much do you want to withdraw: " amount_to_withdraw  # amount_to_withdraw=450000
+        remaining_balance=`expr $current_account_balance - $amount_to_withdraw`
+        echo "your account balance is $remaining_balance"
+        echo -e "\n\t\t\tDO you want to perform another operation\n"
+        echo -e "\n1Enter 1 to perform another operation\n2Enter 2 to exit"
+        read -p "Enter 1,2:" menu_selection
+        if [[ $menu_selection -eq "1" ]]; then
+            echo "select an operation to perform"
+            echo -e "\n1) withdraw \n2) Deposit \n3) check_balance"
+            read -p "Enter 1,2 or 3:" menu_selection
+            if [[ $menu_selection -eq "1" ]]; then
+                read -p "HOw much do you want to withdraw: " amount_to_withdraw  # amount_to_withdraw=450000
+                remaining_balance=`expr $current_account_balance - $amount_to_withdraw`
+                echo "your account balance is $remaining_balance"
+            elif [[ $menu_selection -eq "2" ]]; then
+                read -p "HOw Much money would you like to deposit?" amount_to_deposit
+                new_balance=`expr $current_account_balance + $amount_to_deposit`
+                echo $new_balance
+                echo "your new account balance is ${new_balance}"
+            elif [[ $menu_selection -eq "3" ]]; then
+                echo -e "your account balance  is ${current_account_balance}"
+            else
+                exit
+            fi
+        elif [[ $menu_selection -eq "2" ]]; then
+            exit
+        fi
+    elif [[ $menu_selection -eq "2" ]]; then
+        read -p "HOw Much money would you like to deposit?" amount_to_deposit
+        new_balance=`expr $current_account_balance + $amount_to_deposit`
+        echo $new_balance
+        echo "your new account balance is ${new_balance}"
+        exit
+    elif [[ $menu_selection -eq "3" ]]; then
+        echo -e "your account balance  is ${current_account_balance}"
+    fi
+else
+    echo "sorry you don't have access to this account"
+
+fi
+return $menu_selection
+}
+bank

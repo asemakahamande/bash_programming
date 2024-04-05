@@ -1,0 +1,43 @@
+#!/bin/bash
+clear
+
+
+echo -e "\t\t\tWelcome to Cho-I-Chop Bank\n"
+echo -e "\n*********************************************\n" #the stars make
+echo -e "\t\t\tSelect any operation of Your Choice\n"
+PS3="Your choice: "
+select ITEM in "Withdraw" "Deposit" "Check_balance" "Nothing Else Exit"
+do
+echo -e "\t\t\tplease enter your PIN\n"
+read -s customer_pin #s stand for secrete
+
+if [[ $customer_pin -eq "2111" ]]; then
+      current_account_balance=5000000000000
+    if [[ $REPLY -eq "1" ]]; then
+        read -p "HOw much do you want to withdraw: " amount_to_withdraw
+        if [[ $amount_to_withdraw -lt $current_account_balance ]]; then
+            remaining_balance=`expr $current_account_balance - $amount_to_withdraw`
+            echo "Your remaining balance is: "$remaining_balance
+        else
+             echo -e "\nYou don't have sufficient funds for this transaction"
+        fi
+
+    elif [[ $REPLY -eq "2" ]]; then
+         read -p "HOw Much money would you like to deposit?" amount_to_deposit
+         new_balance=`expr $current_account_balance + $amount_to_deposit`
+         echo "your new account balance is ${new_balance}"
+    elif [[ $REPLY -eq "3" ]]; then
+         echo -e "your account balance  is ${current_account_balance}"
+    elif [[  $REPLY -eq 4 ]]; then
+         echo "Quitting..."
+         sleep 2
+        echo "Take Your card"
+         exit
+    else
+         echo "Not among the options"
+    fi
+else
+   echo "Wrong Pin"
+fi
+done
+

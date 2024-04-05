@@ -1,0 +1,37 @@
+#!/usr/bin/bash
+
+
+function greetSomeone(){
+    echo -e "Hello $1\n"
+
+}
+
+greetSomeone "Ruth"
+greetSomeone "Esther"
+greetSomeone "Wumi"
+
+
+
+function add2numbers(){
+
+    first_number=$1
+    second_number=$2
+    addition=`expr $first_number + $second_number`
+    return $addition
+
+}
+
+add2numbers "5" "7"
+echo "The sum of 5 and 7 os $addition"
+
+
+
+function add_to_curr_balance(){
+    deposit=$1
+    curr_balance=$2
+    check_cur_balance=`expr $deposit + $curr_balance`
+    return $check_cur_balance
+}
+curr_balance=5000
+add_to_curr_balance "7000" $curr_balance
+echo "you added 7000 to $check_cur_balance"

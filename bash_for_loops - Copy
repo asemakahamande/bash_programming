@@ -1,0 +1,47 @@
+#!/usr/bin/bash
+
+
+glo_data_plans=(5gb 10gb 200gb)
+mtn_data_plans=(10gb 15gb 25gb)
+
+for data_plan in ${mtn_data_plans[@]}; do
+    echo -e "${data_plan}"
+done
+
+function display_data_plan(){
+ 
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#students_names=(Ruth mande Ben Moshood)
+
+#for student in ${students_names[@]}; do
+ #   echo -e "$student \n"
+#done;

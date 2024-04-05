@@ -1,0 +1,78 @@
+#!/usr/bin/bash
+
+#go back to four menu_selection
+# maintain the constant balance
+
+clear
+
+
+echo -e "\t\t\tWELCOME TO God's WONDER TELECOM SERVICES\n"
+echo -e "\t\t\tWe are here to solve all data services problems\n"
+echo -e "Enter your pin to indicate your are regular customer\n"
+echo -e "Visit our site to register with us\n"
+read -s customer_pin
+
+if [[ $customer_pin -eq "1111" ]]; then
+    #Menu_selection
+    echo "select telecom company for your data service"
+    echo -e "\n1 MTN \n2 GLO \n3 AIRTEL \n4 9MObile"
+    read -p "Enter 1,2,3,4:" menu_selection
+
+
+    if [[ $menu_selection -eq "1" ]]; then
+        echo "select data plan option"
+        echo -e "\n1 Daily plan \n2 Weekly plan\n3 Monthly plan"
+        read -p "Enter 1,2,3:" menu_selection
+
+
+        if [[ $menu_selection -eq "1" ]]; then
+            echo "Daily data plan are"
+            echo -e "\n1. N25 for 250mb night plan \n2. N100 for 100mb\n3. N200 for 200mb"
+            read -p "Enter 1,2,3:" menu_selection
+
+            if [[ $menu_selection -eq "1" ]]; then
+                echo -e "\nYou have recieved 250mb from God's wonders Telecom services. we look forward to serve you better"
+            elif [[ $menu_selection -eq "2" ]]; then
+                echo -e "\nYou have recieved 100mb from God's wonders Telecom services. We look forward to serve you better"
+            elif [[ $menu_selection -eq "3" ]]; then
+                echo -e "\nYou have recieved 200mb from God's wonders Telecom services. we look forward to serve you better"
+            else
+                echo -e "\nWe don't have such data plan here return to the main menu to view more options"
+           fi
+        elif [[ $menu_selection -eq "2" ]]; then
+            echo "Weekly data plan are"
+            echo -e "\n1. N500 for 1.5gb for one week \n2. N1000 for 2gb and free youTube streaming\n3. N1200 for 2.5gb"
+            read -p "Enter 1,2,3:" menu_selection
+            if [[ $menu_selection -eq "1" ]]; then
+                echo -e "\nYou have recieved 1.5gb from God's wonders Telecom services. we look forward to serve you better"
+            elif [[ $menu_selection -eq "2" ]]; then
+                echo -e "\nYou have recieved 2gb from God's wonders Telecom services. We look forward to serve you better"
+            elif [[ $menu_selection -eq "3" ]]; then
+                echo -e "\nYou have recieved 2.5gb from God's wonders Telecom services. we look forward to serve you better"
+            else
+                echo -e "\nWe don't have such data plan here return to the main menu to view more options"
+           fi
+
+        elif [[ $menu_selection -eq "3" ]]; then
+             echo "Monthly data plan are:"
+             echo -e "\n1. N1500 for 3gb for one month \n2. N2000 for 4gb and free youTube streaming for one month\n3. N5000 for 10gb for two months"
+             read -p "Enter 1,2,3:" menu_selection
+
+            if [[ $menu_selection -eq "1" ]]; then
+                echo -e "\nYou have recieved 3gb from God's wonders Telecom services. we look forward to serve you better"
+            elif [[ $menu_selection -eq "2" ]]; then
+                echo -e "\nYou have recieved 4gb from God's wonders Telecom services. We look forward to serve you better"
+            elif [[ $menu_selection -eq "3" ]]; then
+                echo -e "\nYou have recieved 10gb from God's wonders Telecom services. we look forward to serve you better"
+            else
+                echo -e "\nWe don't have such data plan here return to the main menu to view more options"
+           fi
+
+
+        else
+            echo -e "\nWe don't have data plan here return to the main menu to view other options"
+        fi
+    fi
+
+fi
+
